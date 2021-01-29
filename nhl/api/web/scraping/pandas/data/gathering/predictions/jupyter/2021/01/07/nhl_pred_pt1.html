@@ -1,24 +1,178 @@
-<p><a href="https://colab.research.google.com/github/maddran/NHL-pred/blob/main/NHL_games_data.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing" />
+<meta name="author" content="Madhav" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This is the first of a series of mini-projects focused on using data from NHL Stats to predict the score margin of NHL games." />
+<meta property="og:description" content="This is the first of a series of mini-projects focused on using data from NHL Stats to predict the score margin of NHL games." />
+<link rel="canonical" href="www.madhav.me/nhl/api/web/scraping/pandas/data/gathering/predictions/jupyter/2021/01/07/nhl_pred_pt1.html" />
+<meta property="og:url" content="www.madhav.me/nhl/api/web/scraping/pandas/data/gathering/predictions/jupyter/2021/01/07/nhl_pred_pt1.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-07T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"www.madhav.me/nhl/api/web/scraping/pandas/data/gathering/predictions/jupyter/2021/01/07/nhl_pred_pt1.html","@type":"BlogPosting","headline":"NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing","dateModified":"2021-01-07T00:00:00-06:00","datePublished":"2021-01-07T00:00:00-06:00","author":{"@type":"Person","name":"Madhav"},"mainEntityOfPage":{"@type":"WebPage","@id":"www.madhav.me/nhl/api/web/scraping/pandas/data/gathering/predictions/jupyter/2021/01/07/nhl_pred_pt1.html"},"description":"This is the first of a series of mini-projects focused on using data from NHL Stats to predict the score margin of NHL games.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="www.madhav.me/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
 
-<h1 id="nhl-score-margin-prediction--part-1---downloading-game-data-and-pre-processing">NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing</h1>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing</h1><p class="page-description">This is the first of a series of mini-projects focused on using data from NHL Stats to predict the score margin of NHL games.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-07T00:00:00-06:00" itemprop="datePublished">
+        Jan 7, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Madhav</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      12 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#NHL">NHL</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#API">API</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#web">web</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#scraping">scraping</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#pandas">pandas</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#data">data</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#gathering">gathering</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#predictions">predictions</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#nhl-score-margin-prediction--part-1---downloading-game-data-and-pre-processing">NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#function-definitions">Function Definitions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#call-nhl-api">Call NHL API</a></li>
+<li class="toc-entry toc-h3"><a href="#get-game-data">Get Game Data</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#what-do-we-have-so-far">What do we have so far?</a></li>
+<li class="toc-entry toc-h2"><a href="#more-function-definitions">More Function Definitions</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#get-game-schedule">Get Game schedule</a></li>
+<li class="toc-entry toc-h3"><a href="#rolling-aggregate">Rolling Aggregate</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#putting-it-all-together">Putting it all together</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#getting-data-for-5-nhl-seasons">Getting data for 5 NHL seasons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><p><a href="https://colab.research.google.com/github/maddran/NHL-pred/blob/main/NHL_games_data.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+
+<h1 id="nhl-score-margin-prediction--part-1---downloading-game-data-and-pre-processing">
+<a class="anchor" href="#nhl-score-margin-prediction--part-1---downloading-game-data-and-pre-processing" aria-hidden="true"><span class="octicon octicon-link"></span></a>NHL Score Margin Prediction // Part 1 - Downloading Game Data and Pre-Processing</h1>
 
 <blockquote>
   <p>This is the first of a series of mini-projects focused on using data from <a href="http://www.nhl.com/stats/">NHL Stats</a> to predict the score margin of NHL games.</p>
 </blockquote>
 
-<ul>
-  <li>toc:true- branch: master</li>
-  <li>badges: true</li>
-  <li>comments: false</li>
-  <li>author: Madhav Narendran</li>
-  <li>categories: [NHL, API, web, scraping, pandas, data, gathering, predictions, jupyter]</li>
-</ul>
-
 <p>Having been a long suffering fan of my hometown hockey team (Go Flames Go!), I have had some version of a hockey score / performance prediction project on the go for many, many years. In fact, when I was first self-learning programming in Python, these kinds of projects were key in helping me solidify my skills in data gathering, cleaning, and exploratory analysis.</p>
 
-<p>In this series, I will implement a few different game score/margin prediction pipelines from end-to-end. Part 1 focuses on calling the NHL Stats API to download game-level regular season data for five seasons from 2014-2019, and applying some pre-processing.<br /><br /></p>
+<p>In this series, I will implement a few different game score/margin prediction pipelines from end-to-end. Part 1 focuses on calling the NHL Stats API to download game-level regular season data for five seasons from 2014-2019, and applying some pre-processing.<br><br></p>
 
-<hr />
+<hr>
 
 <p>##Module Imports</p>
 
@@ -29,11 +183,13 @@ from datetime import datetime
 from time import sleep
 </code></pre></div></div>
 
-<h2 id="function-definitions">Function Definitions</h2>
+<h2 id="function-definitions">
+<a class="anchor" href="#function-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Function Definitions</h2>
 
 <p>Let’s get cracking with some function definitions. I’m going to provide a brief overview of the function in text (in lieu of a docstring). I’ll also pepper in some comments within the code where I feel it’s useful.</p>
 
-<h3 id="call-nhl-api">Call NHL API</h3>
+<h3 id="call-nhl-api">
+<a class="anchor" href="#call-nhl-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Call NHL API</h3>
 
 <p><strong>Avoid Scraping Raw HTML -</strong>
 If you’re not familiar with web development, your first instinct when trying to scrape data from a table such as <a href="http://www.nhl.com/stats/teams">this one on NHL Stats</a>, might be to try to download the data directly as you see it rendered in your browser. While there are plently of Python modules that will allow you to do this relatively easily, it is not the most robust approach as there is a good chance your implementation will break once the site undergoes an update which changes its layout.</p>
@@ -96,14 +252,16 @@ If you’re not familiar with web development, your first instinct when trying t
   return response
 </code></pre></div></div>
 
-<h3 id="get-game-data">Get Game Data</h3>
+<h3 id="get-game-data">
+<a class="anchor" href="#get-game-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Game Data</h3>
 
 <p>A previous version of the NHL API could only return a limited number of results, and would time out if too much data was requested. Although this no longer seems to be an issue (at least in the context of retrieving 5 seasons of game summaries) I will make individual calls to <code class="language-plaintext highlighter-rouge">call_nhl</code> for each season.</p>
 
 <p><code class="language-plaintext highlighter-rouge">get_gameData</code> is a function that:</p>
 
 <ul>
-  <li>Takes integer inputs <code class="language-plaintext highlighter-rouge">startYear</code> (year in <code class="language-plaintext highlighter-rouge">YYYY</code> format) and <code class="language-plaintext highlighter-rouge">numSeasons</code></li>
+  <li>Takes integer inputs <code class="language-plaintext highlighter-rouge">startYear</code> (year in <code class="language-plaintext highlighter-rouge">YYYY</code> format) and <code class="language-plaintext highlighter-rouge">numSeasons</code>
+</li>
   <li>Returns a dictionary of <code class="language-plaintext highlighter-rouge">season ID : game data</code> pairs for <code class="language-plaintext highlighter-rouge">numSeasons</code> seasons starting with the season that began in <code class="language-plaintext highlighter-rouge">startYear</code>.</li>
 </ul>
 
@@ -132,7 +290,8 @@ If you’re not familiar with web development, your first instinct when trying t
   return res
 </code></pre></div></div>
 
-<h2 id="what-do-we-have-so-far">What do we have so far?</h2>
+<h2 id="what-do-we-have-so-far">
+<a class="anchor" href="#what-do-we-have-so-far" aria-hidden="true"><span class="octicon octicon-link"></span></a>What do we have so far?</h2>
 
 <p>Lets’s call <code class="language-plaintext highlighter-rouge">get_gameData</code> for a single year and see what the result looks like:</p>
 
@@ -166,11 +325,13 @@ Index(['faceoffWinPct', 'gameDate', 'gameId', 'gamesPlayed', 'goalsAgainst',
 
 <p>In 2018, the NHL had 31 teams each of whom played 82 games for <code class="language-plaintext highlighter-rouge">31 x 82 = 2542</code> total games. So, our result looks good!</p>
 
-<h2 id="more-function-definitions">More Function Definitions</h2>
+<h2 id="more-function-definitions">
+<a class="anchor" href="#more-function-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>More Function Definitions</h2>
 
 <p>Great! So, we have a means of collecting game data. Now, to help with analysis and prediction down the road, I’d like to extract a schedule of games as well as a rolling window aggregate from the raw dataset for each season.</p>
 
-<h3 id="get-game-schedule">Get Game schedule</h3>
+<h3 id="get-game-schedule">
+<a class="anchor" href="#get-game-schedule" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get Game schedule</h3>
 
 <p>To start, we need to produce a means of looking up a team’s name by their ID. There is another endpoint on the NHL API that provides this, but since we have our season of data loaded already, let’s just use that.</p>
 
@@ -222,8 +383,10 @@ teamLU
 <p>Now, we define a function <code class="language-plaintext highlighter-rouge">home_road</code> which takes a game summary dataframe and the team lookup dictionary <code class="language-plaintext highlighter-rouge">team_LU</code> to produce four new columns:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">home, road</code> - contain hoame and road team IDs, respectively</li>
-  <li><code class="language-plaintext highlighter-rouge">homeName, roadName</code> - contain hoame and road team names, respectively</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">home, road</code> - contain hoame and road team IDs, respectively</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">homeName, roadName</code> - contain hoame and road team names, respectively</li>
 </ul>
 
 <p>The funciton <code class="language-plaintext highlighter-rouge">get_schedule</code> puts it all together by applying <code class="language-plaintext highlighter-rouge">home_road</code> to each entry in the game summary dataframe <code class="language-plaintext highlighter-rouge">df</code> and then groups it by the <code class="language-plaintext highlighter-rouge">gameId</code> and <code class="language-plaintext highlighter-rouge">gameDate</code> columns to produce the final schedule:</p>
@@ -328,10 +491,11 @@ def get_schedule(df, teamLU):
 <p>This appears to match the table from NHL Stats. Yay!</p>
 
 <blockquote>
-  <p><img src="https://drive.google.com/uc?export=view&amp;id=11Dlm_pJXzoStlfZXERvZRL4F4OHZ0poG" alt="" /></p>
+  <p><img src="https://drive.google.com/uc?export=view&amp;id=11Dlm_pJXzoStlfZXERvZRL4F4OHZ0poG" alt=""></p>
 </blockquote>
 
-<h3 id="rolling-aggregate">Rolling Aggregate</h3>
+<h3 id="rolling-aggregate">
+<a class="anchor" href="#rolling-aggregate" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rolling Aggregate</h3>
 
 <p>One hypothesis I’d like to test is that performance in the recent past (3-7 games) is far more indicative of future performance than games in the far past. So, let’s write a funciton that produces a rolling aggregate of some of columns in the game summary.</p>
 
@@ -652,7 +816,8 @@ def get_rolling(df, window=3):
 </table>
 </div>
 
-<h2 id="putting-it-all-together">Putting it all together</h2>
+<h2 id="putting-it-all-together">
+<a class="anchor" href="#putting-it-all-together" aria-hidden="true"><span class="octicon octicon-link"></span></a>Putting it all together</h2>
 
 <p>Let’s wrap all the functions we defined into a single function we can all on mutiple seasons of game summary data.</p>
 
@@ -689,7 +854,8 @@ def get_rolling(df, window=3):
   return data
 </code></pre></div></div>
 
-<h3 id="getting-data-for-5-nhl-seasons">Getting data for 5 NHL seasons</h3>
+<h3 id="getting-data-for-5-nhl-seasons">
+<a class="anchor" href="#getting-data-for-5-nhl-seasons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting data for 5 NHL seasons</h3>
 
 <p>So, let’s get all the data we’ll use in the prediction task. I’m going with the 5 most recent complete NHL seasons that were played - i.e. excluding the Covid-shortened seasons of 2019-20 and 2021.</p>
 
@@ -776,9 +942,12 @@ pretty(data)
 <p>The above passes a sense check:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">teamLU</code> has 30 teams until 2017-18 which was the inaugural season of the Vegas Golden Knights (and what an inauguration that was!).</li>
-  <li><code class="language-plaintext highlighter-rouge">raw_data</code> and <code class="language-plaintext highlighter-rouge">rolling</code> always have <code class="language-plaintext highlighter-rouge">82 games x N teams = 82N</code> entries</li>
-  <li><code class="language-plaintext highlighter-rouge">schedule</code> always has <code class="language-plaintext highlighter-rouge">82N/2</code> entries.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">teamLU</code> has 30 teams until 2017-18 which was the inaugural season of the Vegas Golden Knights (and what an inauguration that was!).</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">raw_data</code> and <code class="language-plaintext highlighter-rouge">rolling</code> always have <code class="language-plaintext highlighter-rouge">82 games x N teams = 82N</code> entries</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">schedule</code> always has <code class="language-plaintext highlighter-rouge">82N/2</code> entries.</li>
 </ul>
 
 <p>Now that we are statisfied with the accuracy of the data, let’s serialize it and save it for later - i.e. Part 2!</p>
@@ -790,3 +959,36 @@ pickle.dump( data, open( "data.p", "wb" ) )
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 </code></pre></div></div>
+
+  </div><a class="u-url" href="/nhl/api/web/scraping/pandas/data/gathering/predictions/jupyter/2021/01/07/nhl_pred_pt1.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/maddran" title="maddran"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/mad_nars" title="mad_nars"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
