@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Title | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Title" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
+<link rel="canonical" href="https://maddran.github.io/fastpages-blog/2021/01/07/nhl_pred.html" />
+<meta property="og:url" content="https://maddran.github.io/fastpages-blog/2021/01/07/nhl_pred.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-07T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://maddran.github.io/fastpages-blog/2021/01/07/nhl_pred.html","@type":"BlogPosting","headline":"Title","dateModified":"2021-01-07T00:00:00-06:00","datePublished":"2021-01-07T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://maddran.github.io/fastpages-blog/2021/01/07/nhl_pred.html"},"description":"An easy to use blogging platform with support for Jupyter Notebooks.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages-blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://maddran.github.io/fastpages-blog/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages-blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages-blog/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages-blog/about/">About Me</a><a class="page-link" href="/fastpages-blog/search/">Search</a><a class="page-link" href="/fastpages-blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-07T00:00:00-06:00" itemprop="datePublished">
+        Jan 7, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/maddran/fastpages-blog/tree/master/_notebooks/2021-01-07-nhl_pred.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/fastpages-blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/maddran/fastpages-blog/master?filepath=_notebooks%2F2021-01-07-nhl_pred.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages-blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/maddran/fastpages-blog/blob/master/_notebooks/2021-01-07-nhl_pred.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages-blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-07-nhl_pred.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://colab.research.google.com/github/maddran/NHL-pred/blob/main/NHL_games_data.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" /></a></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">json_normalize</span> 
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="k">def</span> <span class="nf">call_nhl</span><span class="p">(</span><span class="n">startSeason</span><span class="p">,</span> <span class="n">endSeason</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">endSeason</span><span class="p">:</span>
+    <span class="n">endSeason</span> <span class="o">=</span> <span class="n">startSeason</span>
+
+  <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;authority&#39;</span><span class="p">:</span> <span class="s1">&#39;api.nhle.com&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;user-agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s1">&#39;*/*&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.nhl.com&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;sec-fetch-site&#39;</span><span class="p">:</span> <span class="s1">&#39;cross-site&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;sec-fetch-mode&#39;</span><span class="p">:</span> <span class="s1">&#39;cors&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;sec-fetch-dest&#39;</span><span class="p">:</span> <span class="s1">&#39;empty&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;http://www.nhl.com/&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;accept-language&#39;</span><span class="p">:</span> <span class="s1">&#39;en-US,en;q=0.9&#39;</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="n">params</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="p">(</span><span class="s1">&#39;isAggregate&#39;</span><span class="p">,</span> <span class="s1">&#39;false&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;isGame&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;sort&#39;</span><span class="p">,</span> <span class="s1">&#39;[{&quot;property&quot;:&quot;gameDate&quot;,&quot;direction&quot;:&quot;DESC&quot;}]&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;limit&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;factCayenneExp&#39;</span><span class="p">,</span> <span class="s1">&#39;gamesPlayed&gt;=1&#39;</span><span class="p">),</span>
+      <span class="p">(</span><span class="s1">&#39;cayenneExp&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;gameTypeId=2 and seasonId&lt;=</span><span class="si">{</span><span class="n">endSeason</span><span class="si">}</span><span class="s1"> and seasonId&gt;=</span><span class="si">{</span><span class="n">startSeason</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span>
+  <span class="p">)</span>
+  
+
+  <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://api.nhle.com/stats/rest/en/team/summary&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">response</span>
+
+<span class="k">def</span> <span class="nf">get_gameData</span><span class="p">(</span><span class="n">startYear</span><span class="p">,</span> <span class="n">numSeasons</span><span class="p">):</span>
+
+  <span class="n">seasons</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">startYear</span><span class="o">+</span><span class="n">i</span><span class="si">}{</span><span class="n">startYear</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numSeasons</span><span class="p">)]</span>
+
+  <span class="n">rows</span><span class="o">=</span><span class="mi">0</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">seasons</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">call_nhl</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+      <span class="n">response</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+      <span class="n">rows</span><span class="o">+=</span><span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+      <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+      <span class="n">res</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span>
+      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of games grabbed for </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">. Total = </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">rolling_aggregate</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">window</span> <span class="o">=</span> <span class="mi">3</span><span class="p">):</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">roll_sum</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gamesPlayed&#39;</span><span class="p">,</span> <span class="s1">&#39;goalsAgainst&#39;</span><span class="p">,</span> <span class="s1">&#39;goalsFor&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;losses&#39;</span><span class="p">,</span> <span class="s1">&#39;otLosses&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;points&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;regulationAndOtWins&#39;</span><span class="p">,</span> <span class="s1">&#39;winsInShootout&#39;</span><span class="p">]</span>
+
+  <span class="n">roll_mean</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;goalsForPerGame&#39;</span><span class="p">,</span> <span class="s1">&#39;goalsAgainstPerGame&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;shotsForPerGame&#39;</span><span class="p">,</span> <span class="s1">&#39;shotsAgainstPerGame&#39;</span><span class="p">]</span>
+
+  <span class="n">cumsum</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gamesPlayed&#39;</span><span class="p">,</span> <span class="s1">&#39;points&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;goalsFor&#39;</span><span class="p">,</span> <span class="s1">&#39;goalsAgainst&#39;</span><span class="p">]</span>
+            
+
+  <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+  <span class="n">res</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">roll_sum</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">roll_mean</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> 
+            <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="n">res</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;rolling_</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+
+  <span class="n">res</span><span class="p">[[</span><span class="sa">f</span><span class="s2">&quot;cum_</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">cumsum</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cumsum</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+
+  <span class="n">res</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gameId&#39;</span><span class="p">]</span>
+
+  <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="nb">sorted</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+
+  <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">home_road</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">teamLU</span><span class="p">):</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="n">res</span><span class="p">[</span><span class="s1">&#39;home&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;homeRoad&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;H&#39;</span><span class="p">][</span><span class="s1">&#39;teamId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">res</span><span class="p">[</span><span class="s1">&#39;road&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;homeRoad&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;R&#39;</span><span class="p">][</span><span class="s1">&#39;teamId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="n">res</span><span class="p">[</span><span class="s1">&#39;homeName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teamLU</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;home&#39;</span><span class="p">]]</span>
+  <span class="n">res</span><span class="p">[</span><span class="s1">&#39;roadName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">teamLU</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;road&#39;</span><span class="p">]]</span>
+
+  <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">raw_data</span><span class="p">):</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">season</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gameDate&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;gameDate&#39;</span><span class="p">])</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;seasonId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">season</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;gameDate&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">rolling</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;teamId&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rolling_aggregate</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">teamLU</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;teamId&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;teamFullName&#39;</span><span class="p">]))</span>
+
+    <span class="n">schedule</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;gameId&#39;</span><span class="p">,</span> <span class="s1">&#39;gameDate&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">home_road</span><span class="p">,</span> <span class="n">teamLU</span><span class="p">)</span>  
+
+    <span class="n">data</span><span class="p">[</span><span class="n">season</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span><span class="s1">&#39;raw_data&#39;</span><span class="p">:</span><span class="n">df</span><span class="p">,</span> 
+                    <span class="s1">&#39;rolling&#39;</span><span class="p">:</span><span class="n">rolling</span><span class="p">,</span> 
+                    <span class="s1">&#39;schedule&#39;</span><span class="p">:</span><span class="n">schedule</span><span class="p">,</span>
+                    <span class="s1">&#39;teamLU&#39;</span> <span class="p">:</span> <span class="n">teamLU</span><span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">raw_data</span> <span class="o">=</span> <span class="n">get_gameData</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">process_data</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of games grabbed for 20142015 = 2460. Total = 2460
+Number of games grabbed for 20152016 = 2460. Total = 4920
+Number of games grabbed for 20162017 = 2460. Total = 7380
+Number of games grabbed for 20172018 = 2542. Total = 9922
+Number of games grabbed for 20182019 = 2542. Total = 12464
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pretty</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="n">indent</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;teamLU&quot;</span><span class="p">:</span>
+          <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Dictionary: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">pretty</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">indent</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">indent</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;DataFrame: </span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+      
+
+<span class="n">pretty</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>20142015
+	raw_data
+		DataFrame: (2460, 28)
+	rolling
+		DataFrame: (2460, 16)
+	schedule
+		DataFrame: (1230, 4)
+	teamLU
+		Dictionary: 30
+20152016
+	raw_data
+		DataFrame: (2460, 28)
+	rolling
+		DataFrame: (2460, 16)
+	schedule
+		DataFrame: (1230, 4)
+	teamLU
+		Dictionary: 30
+20162017
+	raw_data
+		DataFrame: (2460, 28)
+	rolling
+		DataFrame: (2460, 16)
+	schedule
+		DataFrame: (1230, 4)
+	teamLU
+		Dictionary: 30
+20172018
+	raw_data
+		DataFrame: (2542, 28)
+	rolling
+		DataFrame: (2542, 16)
+	schedule
+		DataFrame: (1271, 4)
+	teamLU
+		Dictionary: 31
+20182019
+	raw_data
+		DataFrame: (2542, 28)
+	rolling
+		DataFrame: (2542, 16)
+	schedule
+		DataFrame: (1271, 4)
+	teamLU
+		Dictionary: 31
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;20142015&#39;</span><span class="p">][</span><span class="s1">&#39;raw_data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>faceoffWinPct</th>
+      <th>gameDate</th>
+      <th>gameId</th>
+      <th>gamesPlayed</th>
+      <th>goalsAgainst</th>
+      <th>goalsAgainstPerGame</th>
+      <th>goalsFor</th>
+      <th>goalsForPerGame</th>
+      <th>homeRoad</th>
+      <th>losses</th>
+      <th>opponentTeamAbbrev</th>
+      <th>otLosses</th>
+      <th>penaltyKillNetPct</th>
+      <th>penaltyKillPct</th>
+      <th>pointPct</th>
+      <th>points</th>
+      <th>powerPlayNetPct</th>
+      <th>powerPlayPct</th>
+      <th>regulationAndOtWins</th>
+      <th>shotsAgainstPerGame</th>
+      <th>shotsForPerGame</th>
+      <th>teamFullName</th>
+      <th>teamId</th>
+      <th>ties</th>
+      <th>wins</th>
+      <th>winsInRegulation</th>
+      <th>winsInShootout</th>
+      <th>seasonId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.385714</td>
+      <td>2014-10-08</td>
+      <td>2014020003</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>R</td>
+      <td>0</td>
+      <td>CGY</td>
+      <td>0</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>0.333333</td>
+      <td>0.333333</td>
+      <td>1</td>
+      <td>25.0</td>
+      <td>33.0</td>
+      <td>Vancouver Canucks</td>
+      <td>23</td>
+      <td>None</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20142015</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.408450</td>
+      <td>2014-10-08</td>
+      <td>2014020004</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>H</td>
+      <td>1</td>
+      <td>SJS</td>
+      <td>0</td>
+      <td>0.75</td>
+      <td>0.75</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>30.0</td>
+      <td>34.0</td>
+      <td>Los Angeles Kings</td>
+      <td>26</td>
+      <td>None</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20142015</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.591549</td>
+      <td>2014-10-08</td>
+      <td>2014020004</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.0</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>R</td>
+      <td>0</td>
+      <td>LAK</td>
+      <td>0</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>1.0</td>
+      <td>2</td>
+      <td>0.250000</td>
+      <td>0.250000</td>
+      <td>1</td>
+      <td>34.0</td>
+      <td>30.0</td>
+      <td>San Jose Sharks</td>
+      <td>28</td>
+      <td>None</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20142015</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.409836</td>
+      <td>2014-10-08</td>
+      <td>2014020002</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>R</td>
+      <td>1</td>
+      <td>BOS</td>
+      <td>0</td>
+      <td>0.50</td>
+      <td>0.50</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>33.0</td>
+      <td>20.0</td>
+      <td>Philadelphia Flyers</td>
+      <td>4</td>
+      <td>None</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20142015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.412698</td>
+      <td>2014-10-08</td>
+      <td>2014020001</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>3.0</td>
+      <td>H</td>
+      <td>1</td>
+      <td>MTL</td>
+      <td>0</td>
+      <td>1.00</td>
+      <td>1.00</td>
+      <td>0.0</td>
+      <td>0</td>
+      <td>0.333333</td>
+      <td>0.333333</td>
+      <td>0</td>
+      <td>32.0</td>
+      <td>27.0</td>
+      <td>Toronto Maple Leafs</td>
+      <td>10</td>
+      <td>None</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20142015</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;20182019&#39;</span><span class="p">][</span><span class="s1">&#39;schedule&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>home</th>
+      <th>road</th>
+      <th>homeName</th>
+      <th>roadName</th>
+    </tr>
+    <tr>
+      <th>gameId</th>
+      <th>gameDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018020001</th>
+      <th>2018-10-03</th>
+      <td>10</td>
+      <td>8</td>
+      <td>Toronto Maple Leafs</td>
+      <td>Montréal Canadiens</td>
+    </tr>
+    <tr>
+      <th>2018020002</th>
+      <th>2018-10-03</th>
+      <td>15</td>
+      <td>6</td>
+      <td>Washington Capitals</td>
+      <td>Boston Bruins</td>
+    </tr>
+    <tr>
+      <th>2018020003</th>
+      <th>2018-10-03</th>
+      <td>23</td>
+      <td>20</td>
+      <td>Vancouver Canucks</td>
+      <td>Calgary Flames</td>
+    </tr>
+    <tr>
+      <th>2018020004</th>
+      <th>2018-10-03</th>
+      <td>28</td>
+      <td>24</td>
+      <td>San Jose Sharks</td>
+      <td>Anaheim Ducks</td>
+    </tr>
+    <tr>
+      <th>2018020005</th>
+      <th>2018-10-04</th>
+      <td>7</td>
+      <td>6</td>
+      <td>Buffalo Sabres</td>
+      <td>Boston Bruins</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span> <span class="n">data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span> <span class="s2">&quot;data.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><a class="u-url" href="/fastpages-blog/2021/01/07/nhl_pred.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages-blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages-blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages-blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages-blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages-blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
