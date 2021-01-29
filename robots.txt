@@ -1,1 +1,1 @@
-Sitemap: maddran.github.io/fastpages-blog/sitemap.xml
+Sitemap: www.madhav.me/sitemap.xml
